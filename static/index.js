@@ -112,8 +112,20 @@ function gameInit() {
         id: "end"
     });
     createjs.Sound.registerSound({
-        src: "./static/music/tap.mp3",
-        id: "tap"
+        src: "./static/music/sing.mp3",
+        id: "sing"
+    });
+    createjs.Sound.registerSound({
+        src: "./static/music/jump.mp3",
+        id: "jump"
+    });
+    createjs.Sound.registerSound({
+        src: "./static/music/rap.mp3",
+        id: "rap"
+    });
+    createjs.Sound.registerSound({
+        src: "./static/music/basketball.mp3",
+        id: "basketball"
     });
     gameRestart();
 }
@@ -259,7 +271,20 @@ function gameTapEvent(e) {
         if (!_gameStart) {
             gameStart();
         }
-        createjs.Sound.play("tap");
+        switch(Math.floor(Math.random() * 4)) {
+            case 0:
+                createjs.Sound.play("sing");
+                break;
+            case 1:
+                createjs.Sound.play("jump");
+                break;
+            case 2:
+                createjs.Sound.play("rap");
+                break;
+            case 3:
+                createjs.Sound.play("basketball");
+                break;
+        }
         tar = document.getElementById(p.id);
         tar.className = tar.className.replace(_ttreg, ' tt$1');
         _gameBBListIndex++;
